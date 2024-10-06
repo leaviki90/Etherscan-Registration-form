@@ -5,15 +5,26 @@ const { chromium, firefox, webkit } = require('playwright');
 Before(async function (scenario) {
     // Get all tags associated with the scenario
     const tags = scenario.pickle.tags;
-    let browserType = ''; // Initialize a variable to determine the browser type
+    let browserType = '@chrome'; // Default to Chrome
 
     // Check if there are any tags
     if (tags.length > 0) {
-        // If tags exist, use the first tag to set the browser type
-        browserType = tags[0].name;
-    } else {
-        // Set default browser type to Chrome if no tags are provided
-        browserType = '@chrome';
+        // If tags exist, check for specific browser tags
+        for (const tag of tags) {
+            if (tag.name === '@firefox') {
+                browserType = '@firefox';
+                break;
+            } else if (tag.name === '@safari') {
+                browserType = '@safari';
+                break;
+            } else if (tag.name === '@edge') {
+                browserType = '@edge';
+                break;
+            } else if (tag.name === '@chrome') {
+                browserType = '@chrome';
+                break;
+            }
+        }
     }
 
     // Launch different browsers based on the tag provided
@@ -26,8 +37,7 @@ Before(async function (scenario) {
     } else if (browserType === '@edge') {
         this.browser = await chromium.launch({ channel: 'msedge', headless: false }); // Launch Edge browser
     } else {
-        // Throw an error if an unsupported browser tag is encountered
-        throw new Error('Unsupported browser');
+        throw new Error('Unsupported browser'); // Unsupported browser tag
     }
 
     // Create a new browser context (isolated session for testing)
@@ -40,7 +50,13 @@ Before(async function (scenario) {
 
 // Hook that runs after each scenario
 After(async function () {
-    await this.page.close(); // Closes the current page
-    await this.context.close(); // Closes the browser context
-    await this.browser.close(); // Closes the browser
+    if (this.page) {
+        await this.page.close(); // Closes the current page
+    }
+    if (this.context) {
+        await this.context.close(); // Closes the browser context
+    }
+    if (this.browser) {
+        await this.browser.close(); // Closes the browser
+    }
 });

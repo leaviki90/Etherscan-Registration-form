@@ -24,7 +24,6 @@ When('the user fills all fields with valid data', async function () {
 // });
 
 When('submits the registration form', async function () {
-    console.log("Hello from the")
     await this.registrationPage.submitForm();
 });
 
@@ -71,7 +70,6 @@ When('the user leaves the email field empty', async function () {
 Then('the user should see an error messages for email & confirm email fields', async function () {
     const emailErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyEmailErr);
     expect(emailErrorMessage).toContain("Please enter a valid email address.");
-
     const confirmEmailErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyEmailConfirmErr);
     expect(confirmEmailErrorMessage).toContain("Email address does not match.");
 })
@@ -94,7 +92,6 @@ When('the user leaves the password field empty', async function () {
 Then('the user should see an error message for the empty password field', async function () {
     const passwordErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyPassErr);
     expect(passwordErrorMessage).toContain("Please enter Password.");
-
     const confirmPasswordErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyConfirmPassErr);
     expect(confirmPasswordErrorMessage).toContain("Password does not match, please check again.");
 
@@ -113,26 +110,31 @@ Then('the user should see an error message for the empty confirm password field'
 
 When('the user enters each invalid email in an invalid format', async function () {
     for (const invalidEmail of testData.invalidEmailData) {
-        console.log(`Testing invalid email: ${invalidEmail}`);
+
+        // Fill the email field with an invalid email format
         await this.registrationPage.page.fill(this.registrationPage.selectors.email, invalidEmail);
 
+        // Submit the email by pressing 'Enter'
         await this.registrationPage.page.press(this.registrationPage.selectors.email, 'Enter');
 
         try {
+            // Wait for the error message for invalid email to appear
             await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.emptyEmailErr, { visible: true, timeout: 5000 });
             const emailErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyEmailErr);
             this.errorMessages.push(emailErrorMessage);
         } catch (error) {
-            console.error(`Greška nije pronađena za email: ${invalidEmail}`);
-            this.errorMessages.push("Greška nije prikazana.");
+            // Log an error if no error message is found for the invalid email
+            console.error(`Error not found for email: ${invalidEmail}`);
+            this.errorMessages.push("Error message not displayed.");
         }
 
+        // Clear the email field before the next iteration
         await this.registrationPage.page.fill(this.registrationPage.selectors.email, '');
     }
 });
 
-Then('the user should see an error message for invalid email format', function () {
 
+Then('the user should see an error message for invalid email format', function () {
     const expectedErrorMessage = "Please enter a valid email address.";
     this.errorMessages.forEach((errorMessage) => {
         expect(errorMessage).toBe(expectedErrorMessage);
@@ -141,81 +143,59 @@ Then('the user should see an error message for invalid email format', function (
 
 
 When('the user enters a password that is too short', async function () {
-
     await this.registrationPage.page.fill(this.registrationPage.selectors.password, shortPassword);
     await this.registrationPage.page.press(this.registrationPage.selectors.password, 'Enter');
 })
 
 Then('the user should see an error message for short password', async function () {
-
     const expectedErrorMessage = "Your password must be at least 8 characters long.";
-
     await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.emptyPassErr, { visible: true });
-
     const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyPassErr);
-
     expect(actualErrorMessage).toContain(expectedErrorMessage);
 })
+// Helper function to fill password and check the label
+async function fillPasswordAndCheckLabel(context, password, expectedLabel) {
+    await context.registrationPage.page.fill(context.registrationPage.selectors.password, password);
+    await context.registrationPage.page.keyboard.press('PageDown');
+    await context.registrationPage.page.waitForSelector(context.registrationPage.selectors.progressLabel, { visible: true });
+    const actualLabel = await context.registrationPage.page.textContent(context.registrationPage.selectors.progressLabel);
+    expect(actualLabel).toContain(expectedLabel);
+}
+
 When('the user enters a weak password', async function () {
-
-    await this.registrationPage.page.fill(this.registrationPage.selectors.password, weakPassword);
-    await this.registrationPage.page.keyboard.press('PageDown');
-
+    await fillPasswordAndCheckLabel(this, weakPassword, "Weak!");
 });
 
 Then('the user should see a label for weak password', async function () {
-    const expectedWeakLabel = "Weak!";
-    await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.progressLabel, { visible: true });
-    const actualWeakLabel = await this.registrationPage.page.textContent(this.registrationPage.selectors.progressLabel);
-    expect(actualWeakLabel).toContain(expectedWeakLabel);
+    // No need for this step anymore as it is handled in the helper function
 });
 
 When('the user enters a medium password', async function () {
-    await this.registrationPage.page.fill(this.registrationPage.selectors.password, mediumPassword);
-    await this.registrationPage.page.keyboard.press('PageDown');
+    await fillPasswordAndCheckLabel(this, mediumPassword, "Medium!");
 });
 
 Then('the user should see a label for medium password', async function () {
-    const expectedMediumLabel = "Medium!";
-    await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.progressLabel, { visible: true });
-
-    const actualMediumLabel = await this.registrationPage.page.textContent(this.registrationPage.selectors.progressLabel);
-    expect(actualMediumLabel).toContain(expectedMediumLabel);
+    // No need for this step anymore as it is handled in the helper function
 });
 
-
 When('the user enters a strong password', async function () {
-
-    await this.registrationPage.page.fill(this.registrationPage.selectors.password, strongPassword);
-    await this.registrationPage.page.keyboard.press('PageDown');
-
+    await fillPasswordAndCheckLabel(this, strongPassword, "Strong!");
 });
 
 Then('the user should see a label for strong password', async function () {
-    const expectedMediumLabel = "Strong!";
-    await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.progressLabel, { visible: true });
-
-    const actualMediumLabel = await this.registrationPage.page.textContent(this.registrationPage.selectors.progressLabel);
-
-    expect(actualMediumLabel).toContain(expectedMediumLabel);
-
+    // No need for this step anymore as it is handled in the helper function
 });
-
 
 When('the user enters a password and a different confirm password', async function() {
     await this.registrationPage.page.fill(this.registrationPage.selectors.password, strongPassword);
     await this.registrationPage.page.fill(this.registrationPage.selectors.confirmPassword, weakPassword);
     await this.registrationPage.page.keyboard.press('PageDown');
-  
 })
 
 Then('the user should see an error message for mismatched passwords', async function() {
     const expectedErrorMessage = "Password does not match, please check again.";
-
     await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.emptyConfirmPassErr, { visible: true });
-
     const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyConfirmPassErr);
-
     expect(actualErrorMessage).toContain(expectedErrorMessage);
 })
 
@@ -226,11 +206,8 @@ When('the user fills all fields but does not accept the terms and conditions', a
 
 Then('the user should see an error message for not accepting the terms and conditions', async function () {
     const expectedErrorMessage = "Please accept our Terms and Conditions.";
-
     await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.termsAndCondsUnchecked, { visible: true });
-
     const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.termsAndCondsUnchecked);
-
     expect(actualErrorMessage).toContain(expectedErrorMessage);
 });
 
