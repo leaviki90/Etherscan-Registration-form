@@ -1,0 +1,21 @@
+{
+  "validData": {
+    "username": "TestUser123",
+    "password": "TestPass123!",
+    "confirmPassword": "TestPass123!"
+  },
+  "invalidEmailData": [
+    "invalid-email.com",
+    "invalid-email@",
+    "invalid@@example.com",
+    "@example.com",
+    "test@.com",
+    "test@"
+  ],
+  "password": {
+    "shortPassword": "Short12",
+    "weakPassword": "password",
+    "mediumPassword": "Password123",
+    "strongPassword": "Password!1234"
+  }
+}

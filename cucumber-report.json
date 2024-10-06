@@ -1,0 +1,846 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "registration-functionality;successful-registration-with-valid-inputs",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Successful registration with valid inputs",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 487026800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1324314000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user fills all fields with valid data",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 241353999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 296932100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "the user should see a message to verify their email",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:31"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5014311700,
+              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout.<anonymous> (C:\\Users\\leavi\\OneDrive\\Desktop\\Etherscan-Registration-form\\node_modules\\@cucumber\\cucumber\\lib\\time.js:54:20)\n    at listOnTimeout (node:internal/timers:581:17)\n    at process.processTimers (node:internal/timers:519:7)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 313286299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-all-fields-are-empty",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Error when all fields are empty",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 520063099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1426907800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "the user leaves all fields empty",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 83326499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 384528600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the user should see error messages for empty fields",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 180656999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 346179200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-email-field-is-empty",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Error when email field is empty",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 518092500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1364252099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "the user leaves the email field empty",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 186934099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54027199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the user should see an error messages for email & confirm email fields",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:71"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42853499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 341396899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-confirm-email-field-is-empty",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Error when confirm email field is empty",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 506161200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 22,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1331699599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "the user leaves the confirm email field empty",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 148932699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51962799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the user should see an error message for the empty email field",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25937399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 295041100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-password-field-is-empty",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Error when password field is empty",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 489750600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 28,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1353573700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 29,
+            "name": "the user leaves the password field empty",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 185630800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76142800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the user should see an error message for the empty password field",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42825600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 281343499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-confirm-password-field-is-empty",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Error when confirm password field is empty",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 491051700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 34,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1331121599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "the user leaves the confirm password field empty",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:103"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 202317499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63212299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "the user should see an error message for the empty confirm password field",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:108"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20769299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 344936200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-email-has-an-invalid-format",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Error when email has an invalid format",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 479378499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 40,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1213303900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "the user enters each invalid email in an invalid format",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:114"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 380523999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the user should see an error message for invalid email format",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:134"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1330699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 270477500
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;error-when-password-is-too-short",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "Error when password is too short",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 470491799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 45,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1316753499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "the user enters a password that is too short",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:143"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76337700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "submits the registration form",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74617500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the user should see an error message for short password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:149"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36940500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 312908599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;weak-password",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "Weak password",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 494811399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 52,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1294957800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "the user enters a weak password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:159"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40588800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the user should see a label for weak password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:166"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14360199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 496214400
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 50
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;medium-password",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Medium password",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 484531399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1306623100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 59,
+            "name": "the user enters a medium password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:173"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45873100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "the user should see a label for medium password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:178"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17470600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 251641299
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 56
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registration-functionality;strong-password",
+        "keyword": "Scenario",
+        "line": 63,
+        "name": "Strong password",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 462465100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 64,
+            "name": "the user is on the registration page",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1399180099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 65,
+            "name": "the user enters a strong password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:187"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35140400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 66,
+            "name": "the user should see a label for strong password",
+            "match": {
+              "location": "tests\\steps\\registration.step.js:194"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18616799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 421514800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 62
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "registration-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Registration Functionality",
+    "tags": [],
+    "uri": "tests\\features\\registration.feature"
+  }
+]

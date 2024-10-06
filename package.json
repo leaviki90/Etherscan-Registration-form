@@ -1,0 +1,18 @@
+{
+  "name": "etherscan-registration-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js --format progress --format json:./cucumber-report.json",
+    "test:smoke": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @smoke"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.1",
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4"
+  }
+}
