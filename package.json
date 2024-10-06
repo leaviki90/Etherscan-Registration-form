@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js --format progress --format json:./cucumber-report.json",
-    "test:smoke": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @smoke"
+    "test:smoke": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @smoke",
+    "test:firefox": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @firefox",
+    "test:safari": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @safari",
+    "test:edge": "cucumber-js --require tests/steps/**/*.js --require tests/hooks/**/*.js features/**/*.feature --tags @edge"
   },
   "keywords": [],
   "author": "",

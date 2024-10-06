@@ -202,3 +202,50 @@ Then('the user should see a label for strong password', async function () {
 });
 
 
+When('the user enters a password and a different confirm password', async function() {
+    await this.registrationPage.page.fill(this.registrationPage.selectors.password, strongPassword);
+    await this.registrationPage.page.fill(this.registrationPage.selectors.confirmPassword, weakPassword);
+    await this.registrationPage.page.keyboard.press('PageDown');
+  
+})
+
+Then('the user should see an error message for mismatched passwords', async function() {
+    const expectedErrorMessage = "Password does not match, please check again.";
+
+    await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.emptyConfirmPassErr, { visible: true });
+
+    const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.emptyConfirmPassErr);
+
+    expect(actualErrorMessage).toContain(expectedErrorMessage);
+})
+
+When('the user fills all fields but does not accept the terms and conditions', async function() {
+    const randomEmail = this.registrationPage.generateRandomEmail();
+    await this.registrationPage.fillRegistrationForm(username, randomEmail, randomEmail, password, confirmPassword, false);
+})
+
+Then('the user should see an error message for not accepting the terms and conditions', async function () {
+    const expectedErrorMessage = "Please accept our Terms and Conditions.";
+
+    await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.termsAndCondsUnchecked, { visible: true });
+
+    const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.termsAndCondsUnchecked);
+
+    expect(actualErrorMessage).toContain(expectedErrorMessage);
+});
+
+// When('the user enters a username that is already registered', async function() {
+//     const randomEmail = this.registrationPage.generateRandomEmail();
+//     const registeredUsername = 'lea90'; 
+//     await this.registrationPage.fillRegistrationForm(registeredUsername, randomEmail, randomEmail, password, confirmPassword, true);
+// })
+
+// Then('the user should see an error message for already registered username', async function() {
+//     const expectedErrorMessage = "Sorry! The username you entered is already in use.";
+    
+//     await this.registrationPage.page.waitForSelector(this.registrationPage.selectors.usernameExistsMessage, { visible: true });
+    
+//     const actualErrorMessage = await this.registrationPage.getErrorMessage(this.registrationPage.selectors.usernameExistsMessage);
+    
+//     expect(actualErrorMessage).toContain(expectedErrorMessage);
+// });   //CAPTCHA problem

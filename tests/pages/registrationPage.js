@@ -15,7 +15,8 @@ class RegistrationPage {
             emptyPassErr: "#ContentPlaceHolder1_txtPassword-error", // Error: empty password
             emptyConfirmPassErr: "#ContentPlaceHolder1_txtPassword2-error", // Error: empty confirm password
             termsAndCondsUnchecked: "div[id='ctl00$ContentPlaceHolder1$MyCheckBox-error']", // Error: terms not accepted
-            progressLabel: ".progress-label" // Progress label (if applicable)
+            progressLabel: ".progress-label", // Progress label (if applicable)
+            usernameExistsMessage: ".alert-danger" //Alert message - The username you entered is already in use
         };
     }
 

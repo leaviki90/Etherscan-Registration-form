@@ -47,20 +47,36 @@ Feature: Registration Functionality
     And submits the registration form
     Then the user should see an error message for short password
 
-  @smoke
   Scenario: Weak password
     Given the user is on the registration page
     When the user enters a weak password
     Then the user should see a label for weak password
 
-  @smoke
   Scenario: Medium password
     Given the user is on the registration page
     When the user enters a medium password
     Then the user should see a label for medium password
 
-  @smoke
   Scenario: Strong password
     Given the user is on the registration page
     When the user enters a strong password
     Then the user should see a label for strong password
+
+  Scenario: Error when "Password" and "Confirm Password" do not match
+    Given the user is on the registration page
+    When the user enters a password and a different confirm password
+    And submits the registration form
+    Then the user should see an error message for mismatched passwords
+
+  @firefox @edge @safari @smoke
+  Scenario: Error when Terms and Conditions are not accepted
+    Given the user is on the registration page
+    When the user fills all fields but does not accept the terms and conditions
+    And submits the registration form
+    Then the user should see an error message for not accepting the terms and conditions
+    
+# Scenario: Error when username is already registered
+#     Given the user is on the registration page
+#     When the user enters a username that is already registered
+#     And submits the registration form
+#     Then the user should see an error message for already registered username
